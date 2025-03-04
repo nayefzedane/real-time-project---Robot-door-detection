@@ -148,8 +148,150 @@ At this stage, we have a self-detection model that identifies an open door in re
 4. Commit the changes.
 
 This file is now ready for GitHub and will render properly with Markdown formatting. Let me know if you need further assistance! 😊
+
 ## Code Implementation
-*(A breakdown of the code and key functions implemented.)*
+Here’s the translated and professionally rewritten version of your text, formatted for a `.md` file. It is concise, professional, and ready to be added to GitHub:
+
+## Code Introduction
+At this stage, we are ready to transition to the code implementation.
+
+### Requirements:
+- A computer.
+- A **TELLO** drone.
+
+### Notes:
+- This code is tailored for the **TELLO** drone used in the lab. The drone's camera quality is not as high as the samples used to train the model, so we will make adjustments to improve the results. Specifically, we will resize the image to **1280x720**, which has proven to be the optimal size for this setup. However, if using a higher-quality camera (e.g., FHD or above), the recommended image size is **640x640**.
+- The rationale for resizing the image is based on two key observations:
+  1. **Self-detection models perform better with larger samples.**
+  2. **Models process smaller images faster.**
+  Given that our model is powerful and fast, we can sacrifice a small amount of speed to achieve better detection accuracy.
+- Additionally, we will implement a **centering navigation algorithm** to further enhance performance.
+
+---
+
+## Algorithm Overview
+1. **Image Capture**: Receive an image from the drone.
+2. **Model Inference**: Run the model on the image to detect the door. The model returns the coordinates of the bounding box: `(x1, y1)` (top-left corner) and `(x2, y2)` (bottom-right corner).
+3. **Centering Calculation**: Calculate the distance between the center of the door and the center of the image. Adjust the drone's position to align the door's center with the image's center.
+4. **Size-Based Navigation**: Calculate the size of the door relative to the image. Move the drone closer to the door if the door appears small in the image.
+5. **Exit Condition**: If the door is no longer detected, the drone exits the door.
+
+---
+
+## Code Implementation
+
+### Libraries Used:
+- **`ultralytics`**: For loading and running the YOLO model. It automatically utilizes the GPU if available.
+- **`cv2` (OpenCV)**: For image processing and visualization.
+- **`math`**: For calculating confidence scores.
+- **`time`**: For adding delays between drone actions.
+- **`djitellopy`**: For controlling the **TELLO** drone.
+
+### Key Functions:
+1. **`initializeTello()`**:
+   - Initializes the drone connection.
+   - Sets initial velocities and speed to zero.
+   - Checks the drone's battery level.
+   - Enables the drone's video stream.
+
+2. **`telloGetFrame(myDrone, w=1280, h=720)`**:
+   - Captures a frame from the drone.
+   - Resizes the frame to the specified dimensions (`1280x720` by default).
+   - Converts the frame from RGB to BGR format for OpenCV compatibility.
+
+---
+
+### Main Workflow
+
+#### Parameters:
+- `width = 1280`: Image width.
+- `height = 720`: Image height.
+- `startCounter = 0`: Controls the drone's takeoff (0 = no flight, 1 = flight).
+- `door_center_x`, `door_center_y`: Coordinates of the door's center.
+- `door_detection = False`: Tracks whether a door is detected.
+- `is_rotat = 1`: Controls the drone's rotation.
+
+#### Initialization:
+```python
+myDrone = initializeTello()
+door_model = YOLO("C:\\Users\\nayef\\Desktop\\x-project\\ptXpt.pt")
+```
+
+#### Main Loop:
+1. **Takeoff**:
+   - The drone takes off and begins searching for the door.
+   ```python
+   if startCounter == 0:
+       myDrone.takeoff()
+       myDrone.send_rc_control(0, 0, 10, 0)
+       startCounter = 1
+   ```
+
+2. **Image Capture and Processing**:
+   - Capture a frame from the drone.
+   - Run the YOLO model on the frame.
+   ```python
+   img = telloGetFrame(myDrone, width, height)
+   results = door_model(img, show=True)
+   ```
+
+3. **Door Detection**:
+   - Extract bounding box coordinates (`x1, y1, x2, y2`).
+   - Calculate the door's width and height.
+   - Filter detections with a confidence score above 75%.
+   ```python
+   for r in results:
+       boxes = r.boxes
+       for box in boxes:
+           x1, y1, x2, y2 = box.xyxy[0]
+           x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+           w, h = x2 - x1, y2 - y1
+           cls = int(box.cls[0])
+           if box.conf[0] > 0.75 and cls == 1:
+               door_detection = True
+   ```
+
+4. **Navigation Logic**:
+   - Calculate the door's center and its deviation from the image's center.
+   - Adjust the drone's position based on the deviation.
+   ```python
+   door_center_x = (x1 + x2) // 2
+   door_center_y = (y1 + y2) // 2
+   size_img = width * height
+   size_door = w * h
+   size_error = (size_door / size_img)
+   horizontal_error = door_center_x - (width // 2)
+   vertical_error = door_center_y - (height // 2)
+   ```
+
+5. **Drone Movement**:
+   - Move the drone forward, backward, up, down, or rotate based on the calculated errors.
+   ```python
+   if size_error > 0.9:
+       forward_backward = -10  # Move backward
+   elif size_error < 0.8:
+       forward_backward = 10   # Move forward
+   myDrone.send_rc_control(left_right, forward_backward, up_down, yaw)
+   ```
+
+6. **Exit Condition**:
+   - If the door is no longer detected, land the drone.
+   ```python
+   if size_error < 0.9 and size_error > 0.8:
+       if cls == 1:
+           myDrone.send_rc_control(0, 20, 0, 0)
+           time.sleep(4)
+           myDrone.land()
+           break
+   ```
+
+---
+
+## Summary
+In this stage, we implemented a navigation algorithm that centers the drone relative to the detected door. The algorithm is linear in complexity and easy to validate. While the **TELLO** drone's camera quality is suboptimal, the code is designed to work effectively with it. For higher-quality cameras, the image size can be adjusted to **640x640** for better performance.
+
+In the next stage, we will present the practical results of the project. Notably, the model's detection accuracy is lower with the drone's camera compared to the high-quality samples used during training. This highlights the importance of camera quality in achieving consistent high-confidence detections.
+
 
 ## Project Results
 *(Presentation of findings, images, and performance metrics.)*
