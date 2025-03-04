@@ -294,11 +294,122 @@ In the next stage, we will present the practical results of the project. Notably
 
 
 ## Project Results
-*(Presentation of findings, images, and performance metrics.)*
+## Project Results: Introduction
+In this stage, we will present the results of the project. Previously, we demonstrated the model's performance, so this section focuses on the final outcome of the door-exit operation and key research insights.
+
+---
+
+## Final Results
+### Door Exit Operation
+The drone successfully navigates through the door using the following steps:
+1. **Detection**: The model identifies the door with high confidence.
+2. **Centering**: The drone aligns itself with the center of the door.
+3. **Navigation**: The drone moves forward or backward based on the door's size in the image.
+4. **Exit**: Once the drone passes through the door, it lands safely.
+
+**Key Observations**:
+- The model achieves a detection confidence of over **75%** in most cases.
+- The navigation algorithm effectively centers the drone relative to the door.
+- The drone's movement is smooth and controlled, demonstrating the algorithm's robustness.
+
+---
+
+## Research Insights
+1. **Camera Quality Matters**:
+   - The **TELLO** drone's camera quality significantly impacts detection accuracy. While the model performs well with high-quality images, the drone's lower-resolution camera results in occasional missed detections.
+   - For future improvements, using a drone with a higher-quality camera (e.g., FHD or 4K) is recommended.
+
+2. **Image Size Optimization**:
+   - Resizing the image to **1280x720** improved detection accuracy for the **TELLO** drone. However, for higher-quality cameras, a smaller image size (**640x640**) is more efficient without sacrificing accuracy.
+
+3. **Real-Time Performance**:
+   - Running the model on a **GPU** significantly improved real-time performance. On a CPU, the processing time was too slow for practical use.
+   - The navigation algorithm's linear complexity ensures efficient performance even with limited computational resources.
+
+4. **Limitations**:
+   - The model occasionally fails to detect the door in low-light conditions or when the door is partially obscured.
+   - The drone's battery life limits the duration of continuous operation.
+
+---
 
 ## Conclusion
-A camera-only guide robot presents a cost-effective and accessible solution for visually impaired individuals. Despite its limitations, it provides a viable way to assist in navigation. This project successfully demonstrates an approach to **detect open doors in real-time and guide the robot toward the exit**.
+The project successfully demonstrates the integration of a YOLO-based detection model with a **TELLO** drone for autonomous navigation through a door. While the results are promising, there is room for improvement, particularly in enhancing camera quality and optimizing the model for real-world conditions.
 
+In the next phase, we will explore advanced techniques to address these limitations and further improve the system's reliability and performance.
 
-**Note**: Images will replace video demonstrations where applicable.
+## Project Documentation: Tasks, Challenges, and Future Research
+
+### Project Overview
+The research focuses on identifying a door in a 2D image and navigating a robot through it in a 3D space. The project involves:
+1. Programming a real-time **object detection model** to identify doors.
+2. Developing a navigation algorithm to center the robot relative to the door.
+
+---
+
+### Project Tasks
+1. **Train a Robust Machine Learning Model**:
+   - Develop an object detection model capable of identifying doors in real time.
+2. **Offline Functionality**:
+   - Ensure the model operates without an internet connection.
+3. **Transparent Door Detection**:
+   - Enable the model to detect transparent or glass doors.
+4. **Safe Navigation Algorithm**:
+   - Design an algorithm that ensures safe and environment-appropriate drone movement.
+5. **Optimize for Low-Quality Camera**:
+   - Address the limitations of the drone's low-quality camera.
+
+---
+
+### Challenges
+1. Training a powerful machine learning model.
+2. Ensuring the model works offline.
+3. Detecting transparent doors.
+4. Developing a safe and efficient navigation algorithm.
+5. Overcoming the limitations of the drone's low-quality camera.
+
+---
+
+### Future Research Directions
+During the project, I considered several extensions for future research:
+
+#### 1. **Outdoor Navigation Robot for the Visually Impaired**
+   - **Objective**: Develop a robot that can guide visually impaired individuals outdoors.
+   - **Features**:
+     - Detect crosswalks and traffic lights.
+     - Wait for a green light before crossing.
+     - Navigate to a bus stop and identify the arriving bus number.
+   - **Implementation**: Add relevant models for each task (e.g., bus detection, number recognition, door detection).
+
+#### 2. **Real-Time Doorway Detection in Low-Power Systems**
+   - **Objective**: Detect doors in real time using a 2D camera on low-power devices.
+   - **Approach**:
+     - Use multiple models: one for detecting the presence of a door, one for depth estimation, and one for color analysis.
+     - Combine these models to achieve door detection without requiring a GPU.
+
+---
+
+### Why I Deserve a High Grade
+This is a challenging question, and the lecturer may have a better perspective. However, here are my thoughts:
+1. **Innovative Project**:
+   - The project has the potential to help many people and save significant costs (e.g., guide dogs cost over 20,000 ILS).
+2. **Powerful and Reliable Model**:
+   - The model I designed is robust and trustworthy. It is an advanced version (v16) of existing models, requiring 12 hours of training and additional testing for each iteration.
+   - The model can process **30 frames per second**, making it highly efficient for real-time applications.
+3. **Effort and Problem-Solving**:
+   - I invested significant effort in the course and demonstrated strong problem-solving skills.
+
+---
+
+### Acknowledgments
+- **Course Lecturer**: Prof. Dan Feldman  
+  Helped with decision-making and problem-solving strategies.
+- **Course TA**: Fares Fares  
+  Assisted with the practical aspects of using the drone.
+
+---
+
+### Note
+All content in the presentation, including code, models, images, claims, and any other materials in the project folder, is my original work. No external sources were used without proper attribution.
+
+Thank you!
 
