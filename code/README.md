@@ -91,8 +91,6 @@ In the next stage, we integrate the trained model into our project and address r
 
 
 ## Model Usage
-Here’s your entire text translated into English and formatted as a single `.md` file, ready to be copied directly to GitHub:
-
 
 ## Introduction
 To use the model, we will use the Ultralytics library.
