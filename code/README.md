@@ -113,10 +113,7 @@ This is how the model is used. When a door is detected, data about its location 
 ## Model Results
 The model detects an open door with high accuracy, but there is an issue with real-time data processing. Since the model is powerful and detects small objects, it requires high processing power, which causes significant slowdowns.
 
-**Link to a demonstration of the model's results on the CPU:**  
-[https://screenrec.com/share/CfsxEzLZV9](https://screenrec.com/share/CfsxEzLZV9)
-
-In the output, you can see that running a short video clip (15 seconds) takes more than a minute, indicating a performance issue.
+In testing, it was observed that processing a short 15-second video took more than a minute, indicating a performance issue when running on a CPU.
 
 ## Real-Time Data Processing
 At this stage, we will solve the issue of the model's slow performance on the CPU.
