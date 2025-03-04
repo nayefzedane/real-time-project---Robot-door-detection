@@ -93,7 +93,7 @@ In the next stage, we integrate the trained model into our project and address r
 ## Model Usage
 Here’s your entire text translated into English and formatted as a single `.md` file, ready to be copied directly to GitHub:
 
-```markdown
+
 ## Introduction
 To use the model, we will use the Ultralytics library.
 
@@ -139,7 +139,7 @@ After completing these steps, the model will automatically run on the GPU if ava
 
 ## Summary
 At this stage, we have a self-detection model that identifies an open door in real time. In the next step, we will move to the final navigation code, where we will use a **TELLO** drone.
-```
+
 
 ### How to Use:
 1. Copy the entire content above.
@@ -157,6 +157,6 @@ This file is now ready for GitHub and will render properly with Markdown formatt
 ## Conclusion
 A camera-only guide robot presents a cost-effective and accessible solution for visually impaired individuals. Despite its limitations, it provides a viable way to assist in navigation. This project successfully demonstrates an approach to **detect open doors in real-time and guide the robot toward the exit**.
 
----
+
 **Note**: Images will replace video demonstrations where applicable.
 
