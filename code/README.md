@@ -133,15 +133,6 @@ Performance tests have shown a significant improvement when using a GPU compared
 ## Summary
 At this stage, we have a self-detection model that identifies an open door in real time. In the next step, we will move to the final navigation code, where we will use a **TELLO** drone.
 
-
-### How to Use:
-1. Copy the entire content above.
-2. Go to GitHub and create a new file (e.g., `README.md` or `documentation.md`).
-3. Paste the content into the file.
-4. Commit the changes.
-
-This file is now ready for GitHub and will render properly with Markdown formatting. Let me know if you need further assistance! 😊
-
 ## Code Implementation
 Here’s the translated and professionally rewritten version of your text, formatted for a `.md` file. It is concise, professional, and ready to be added to GitHub:
 
