@@ -297,6 +297,15 @@ The drone successfully navigates through the door using the following steps:
 
 ---
 
+![Picture1](https://github.com/user-attachments/assets/8f8fff32-8d14-4adf-a2d9-fdbad85c5c4d)
+
+
+https://github.com/user-attachments/assets/aa110060-e311-468f-980b-4db6c3131b45
+
+## Final Results Video:
+https://youtube.com/watch?v=vk3_GCYqkJQ&si=ZB0JPpSbr4FMXpGT
+ 
+
 ## Research Insights
 
 1. **Image Size Optimization**:
