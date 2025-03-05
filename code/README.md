@@ -134,7 +134,6 @@ Performance tests have shown a significant improvement when using a GPU compared
 At this stage, we have a self-detection model that identifies an open door in real time. In the next step, we will move to the final navigation code, where we will use a **TELLO** drone.
 
 ## Code Implementation
-Here’s the translated and professionally rewritten version of your text, formatted for a `.md` file. It is concise, professional, and ready to be added to GitHub:
 
 ## Code Introduction
 At this stage, we are ready to transition to the code implementation.
@@ -278,7 +277,7 @@ In the next stage, we will present the practical results of the project. Notably
 
 
 ## Project Results
-## Project Results: Introduction
+## Introduction
 In this stage, we will present the results of the project. Previously, we demonstrated the model's performance, so this section focuses on the final outcome of the door-exit operation and key research insights.
 
 ---
@@ -299,101 +298,106 @@ The drone successfully navigates through the door using the following steps:
 ---
 
 ## Research Insights
-1. **Camera Quality Matters**:
-   - The **TELLO** drone's camera quality significantly impacts detection accuracy. While the model performs well with high-quality images, the drone's lower-resolution camera results in occasional missed detections.
-   - For future improvements, using a drone with a higher-quality camera (e.g., FHD or 4K) is recommended.
 
-2. **Image Size Optimization**:
+1. **Image Size Optimization**:
    - Resizing the image to **1280x720** improved detection accuracy for the **TELLO** drone. However, for higher-quality cameras, a smaller image size (**640x640**) is more efficient without sacrificing accuracy.
 
-3. **Real-Time Performance**:
+2. **Real-Time Performance**:
    - Running the model on a **GPU** significantly improved real-time performance. On a CPU, the processing time was too slow for practical use.
    - The navigation algorithm's linear complexity ensures efficient performance even with limited computational resources.
 
-4. **Limitations**:
+3. **Limitations**:
    - The model occasionally fails to detect the door in low-light conditions or when the door is partially obscured.
    - The drone's battery life limits the duration of continuous operation.
 
 ---
 
 ## Conclusion
-The project successfully demonstrates the integration of a YOLO-based detection model with a **TELLO** drone for autonomous navigation through a door. While the results are promising, there is room for improvement, particularly in enhancing camera quality and optimizing the model for real-world conditions.
 
-In the next phase, we will explore advanced techniques to address these limitations and further improve the system's reliability and performance.
+## **Project Summary**
+This project successfully integrates a YOLO-based object detection model with a **TELLO** drone for autonomous navigation through a door. The results are promising, demonstrating the potential of AI-driven robotics. However, improvements can be made, particularly in enhancing camera quality and optimizing the model for real-world conditions.  
 
-## Project Documentation: Tasks, Challenges, and Future Research
-
-### Project Overview
-The research focuses on identifying a door in a 2D image and navigating a robot through it in a 3D space. The project involves:
-1. Programming a real-time **object detection model** to identify doors.
-2. Developing a navigation algorithm to center the robot relative to the door.
+Moving forward, we will explore advanced techniques to address these limitations and further enhance the system's reliability and performance.  
 
 ---
 
-### Project Tasks
-1. **Train a Robust Machine Learning Model**:
-   - Develop an object detection model capable of identifying doors in real time.
-2. **Offline Functionality**:
-   - Ensure the model operates without an internet connection.
-3. **Transparent Door Detection**:
-   - Enable the model to detect transparent or glass doors.
-4. **Safe Navigation Algorithm**:
-   - Design an algorithm that ensures safe and environment-appropriate drone movement.
-5. **Optimize for Low-Quality Camera**:
-   - Address the limitations of the drone's low-quality camera.
+## **Project Documentation: Objectives, Challenges, and Future Directions**
+
+### **Project Overview**
+This research focuses on detecting doors in 2D images and enabling a drone to navigate through them in a 3D space. The project involves:  
+1. Developing a **real-time object detection model** for door recognition.  
+2. Implementing a **navigation algorithm** to align the drone with the door's center.  
 
 ---
 
-### Challenges
-1. Training a powerful machine learning model.
-2. Ensuring the model works offline.
-3. Detecting transparent doors.
-4. Developing a safe and efficient navigation algorithm.
-5. Overcoming the limitations of the drone's low-quality camera.
+### **Key Tasks**
+1. **Developing a Robust Machine Learning Model**  
+   - Training an object detection model capable of identifying doors in real time.  
+2. **Ensuring Offline Functionality**  
+   - Enabling the model to operate without an internet connection.  
+3. **Handling Transparent Doors**  
+   - Enhancing the model to detect glass and transparent doors.  
+4. **Designing a Safe Navigation Algorithm**  
+   - Creating an algorithm to ensure safe and stable drone movement.  
+5. **Optimizing for Low-Quality Cameras**  
+   - Addressing the limitations of the drone’s built-in camera.  
 
 ---
 
-### Future Research Directions
-During the project, I considered several extensions for future research:
-
-#### 1. **Outdoor Navigation Robot for the Visually Impaired**
-   - **Objective**: Develop a robot that can guide visually impaired individuals outdoors.
-   - **Features**:
-     - Detect crosswalks and traffic lights.
-     - Wait for a green light before crossing.
-     - Navigate to a bus stop and identify the arriving bus number.
-   - **Implementation**: Add relevant models for each task (e.g., bus detection, number recognition, door detection).
-
-#### 2. **Real-Time Doorway Detection in Low-Power Systems**
-   - **Objective**: Detect doors in real time using a 2D camera on low-power devices.
-   - **Approach**:
-     - Use multiple models: one for detecting the presence of a door, one for depth estimation, and one for color analysis.
-     - Combine these models to achieve door detection without requiring a GPU.
+### **Challenges Encountered**
+- Training an accurate and efficient machine learning model.  
+- Enabling offline model operation.  
+- Developing reliable detection for transparent doors.  
+- Ensuring safe and precise navigation.  
+- Overcoming the constraints of low-quality drone cameras.  
 
 ---
 
-### Why I Deserve a High Grade
-This is a challenging question, and the lecturer may have a better perspective. However, here are my thoughts:
-1. **Innovative Project**:
-   - The project has the potential to help many people and save significant costs (e.g., guide dogs cost over 20,000 ILS).
-2. **Powerful and Reliable Model**:
-   - The model I designed is robust and trustworthy. It is an advanced version (v16) of existing models, requiring 12 hours of training and additional testing for each iteration.
-   - The model can process **30 frames per second**, making it highly efficient for real-time applications.
-3. **Effort and Problem-Solving**:
-   - I invested significant effort in the course and demonstrated strong problem-solving skills.
+## **Future Research Directions**
+During the project, I identified several potential areas for further development:  
+
+### **1. Outdoor Navigation for the Visually Impaired**
+- **Goal**: Design a robotic guide to assist visually impaired individuals in outdoor environments.  
+- **Key Features**:  
+  - Detect crosswalks and traffic lights.  
+  - Wait for green lights before crossing.  
+  - Navigate to bus stops and recognize bus numbers.  
+- **Implementation**: Integrate multiple models, including bus detection, number recognition, and door detection.  
+
+### **2. Real-Time Doorway Detection on Low-Power Devices**
+- **Goal**: Develop a lightweight system for detecting doors using low-power hardware.  
+- **Approach**:  
+  - Utilize multiple models:  
+    - One for door presence detection.  
+    - One for depth estimation.  
+    - One for color analysis.  
+  - Combine the models to enable GPU-free real-time detection.  
 
 ---
 
-### Acknowledgments
-- **Course Lecturer**: Prof. Dan Feldman  
-  Helped with decision-making and problem-solving strategies.
-- **Course TA**: Fares Fares  
-  Assisted with the practical aspects of using the drone.
+## **Why This Project Deserves a High Grade**
+Although the final assessment is up to the lecturer, here’s why I believe this project stands out:  
+
+1. **Innovative and Impactful**  
+   - This technology has real-world applications, potentially reducing costs (e.g., guide dogs cost over 20,000 ILS) and improving accessibility.  
+
+2. **Strong Technical Execution**  
+   - The model is highly reliable, leveraging advanced deep learning techniques.  
+   - The latest version (v16) of the model required over 12 hours of training and iterative improvements.  
+   - Capable of processing **30 frames per second**, making it highly efficient for real-time applications.  
+
+3. **Significant Effort and Problem-Solving**  
+   - Throughout the course, I tackled complex challenges and implemented effective solutions.  
 
 ---
 
-### Note
-All content in the presentation, including code, models, images, claims, and any other materials in the project folder, is my original work. No external sources were used without proper attribution.
+## **Acknowledgments**
+- **Prof. Dan Feldman** – Provided guidance on decision-making and problem-solving strategies.  
+- **TA Fares Fares** – Assisted with the practical implementation of the drone system.  
 
-Thank you!
+---
 
+## **Final Note**
+All project materials, including code, models, images, and written content, are my original work. No external sources were used without proper attribution.  
+
+**Thank you!**
