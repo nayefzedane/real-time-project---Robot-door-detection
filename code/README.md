@@ -127,11 +127,9 @@ In our project, we will use an **NVIDIA** GPU.
 3. Copy cuDNN files to the CUDA 11.8 directory
 4. Install PyTorch compatible with CUDA 11.8
 
-After completing these steps, the model will automatically run on the GPU if available; otherwise, it will run on the CPU.
+After completing these steps, the model will automatically run on the GPU if one is available; otherwise, it will default to running on the CPU.
 
-**Link to a demonstration of the difference between running on GPU vs. CPU:**  
-[https://screenrec.com/share/xp5oKXHigW](https://screenrec.com/share/xp5oKXHigW)
-
+Performance tests have shown a significant improvement when using a GPU compared to a CPU, reducing processing time and enhancing real-time capabilities.
 ## Summary
 At this stage, we have a self-detection model that identifies an open door in real time. In the next step, we will move to the final navigation code, where we will use a **TELLO** drone.
 
